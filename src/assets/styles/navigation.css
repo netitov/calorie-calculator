@@ -1,0 +1,44 @@
+.navigation {
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  position: absolute;
+}
+
+.navigation__link {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.3s;
+  cursor: pointer;
+
+  padding: 5px;
+  border-radius: 15px;
+}
+
+.navigation__link path {
+  fill: #fff;
+}
+
+.navigation__link:hover, .navigation__link_active {
+  background-color: #93bbb2;
+}
+
+.navigation__link > svg {
+  width: 20px;
+  height: 20px;
+}
+
+.navigation__link rect {
+  fill: none;
+}
+
+.navigation ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  gap: 15px;
+}
+
+

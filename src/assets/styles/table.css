@@ -1,0 +1,107 @@
+.table {
+  width: 100%;
+  border-spacing: 0;
+  table-layout: fixed;
+  min-width: 350px;
+  max-width: 600px;
+  font-size: 15px;
+}
+
+.table__header {
+  font-weight: 300;
+  text-align: start;
+  padding: 0 5px 5px;
+}
+
+.table__header-energy, .table__header-size {
+  width: 100px;
+}
+
+.table__header_asc:after {
+  content: '🠇';
+  margin-left: 2px;
+  color: #545350b0;
+}
+
+.table__header_desc:after {
+  content: '🠅';
+  margin-left: 2px;
+  color: #545350b0;
+}
+
+.table td {
+  padding: 13px 5px;
+  border-top: 1px solid #80808040;
+}
+
+.table__meal-energy {
+  color: var(--darker-green);
+  width: 70%;
+}
+
+.table__meal-type {
+  border: none;
+  background-color: #eef6f4a3;
+  font-weight: 300;
+  border-radius: 10px;
+  padding: 2px 5px;
+  outline: none;
+  cursor: pointer;
+}
+
+.table__meal-type > option {
+  background-color: #fff;
+  font-size: 13px;
+  border: none;
+  font-weight: 400;
+}
+
+.table__input {
+  font-size: inherit;
+  background: none;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  transition: all 0.3s;
+  padding: 5px;
+}
+
+.table__input:hover, .table__input:focus {
+  background-color: #cee5e075;
+}
+
+.table__meal-size {
+  width: 70%;
+}
+
+.table__td-energy {
+  display: flex;
+  gap: 5px;
+}
+
+.table__delete-btn {
+  padding: 3px;
+  cursor: pointer;
+  display: flex;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.table__row:hover .table__delete-btn {
+  opacity: 1;
+}
+
+.table__delete-btn > svg {
+  width: 20px;
+}
+
+.table__delete-btn > svg path {
+  transition: all 0.3s;
+}
+
+.table__delete-btn:hover > svg path {
+  stroke: var(--darker-green);
+}
+
+
+

@@ -11,7 +11,147 @@
   </head>
   <body>
     <div class="page">
+      <div class="page__wrapper">
 
+        <header class="page__header">
+          <h1 class="page__heading">calorie-calc.</h1>
+
+          <nav class="page__nav navigation">
+            <ul>
+              <li>
+                <a href="#" class="navigation__link navigation__link_active">
+                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="24" height="24" fill="white"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M13.9931 3.43368C12.8564 2.42331 11.1436 2.42331 10.0069 3.43368L2.33565 10.2526C1.92286 10.6195 1.88568 11.2516 2.2526 11.6644C2.61952 12.0771 3.25159 12.1143 3.66437 11.7474L4.00001 11.4491L4.00001 17.0658C3.99996 17.9523 3.99992 18.7161 4.08215 19.3278C4.17028 19.9833 4.36903 20.6117 4.87869 21.1213C5.38835 21.631 6.0167 21.8297 6.67222 21.9179C7.28388 22.0001 8.04769 22 8.93418 22H15.0658C15.9523 22 16.7161 22.0001 17.3278 21.9179C17.9833 21.8297 18.6117 21.631 19.1213 21.1213C19.631 20.6117 19.8297 19.9833 19.9179 19.3278C20.0001 18.7161 20.0001 17.9523 20 17.0659L20 11.4491L20.3356 11.7474C20.7484 12.1143 21.3805 12.0771 21.7474 11.6644C22.1143 11.2516 22.0772 10.6195 21.6644 10.2526L13.9931 3.43368ZM12 16C11.4477 16 11 16.4477 11 17V19C11 19.5523 10.5523 20 10 20C9.44772 20 9 19.5523 9 19V17C9 15.3431 10.3431 14 12 14C13.6569 14 15 15.3431 15 17V19C15 19.5523 14.5523 20 14 20C13.4477 20 13 19.5523 13 19V17C13 16.4477 12.5523 16 12 16Z" fill="#323232"/>
+                  </svg>
+                </a>
+              </li>
+
+              <li>
+                <a href="#" class="navigation__link">
+                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M17.2929 2.29289C17 2.58579 17 3.05719 17 4V17C17 17.9428 17 18.4142 17.2929 18.7071C17.5858 19 18.0572 19 19 19C19.9428 19 20.4142 19 20.7071 18.7071C21 18.4142 21 17.9428 21 17V4C21 3.05719 21 2.58579 20.7071 2.29289C20.4142 2 19.9428 2 19 2C18.0572 2 17.5858 2 17.2929 2.29289Z" fill="#1C274C"/>
+                    <path d="M10 7C10 6.05719 10 5.58579 10.2929 5.29289C10.5858 5 11.0572 5 12 5C12.9428 5 13.4142 5 13.7071 5.29289C14 5.58579 14 6.05719 14 7V17C14 17.9428 14 18.4142 13.7071 18.7071C13.4142 19 12.9428 19 12 19C11.0572 19 10.5858 19 10.2929 18.7071C10 18.4142 10 17.9428 10 17V7Z" fill="#1C274C"/>
+                    <path d="M3.29289 9.29289C3 9.58579 3 10.0572 3 11V17C3 17.9428 3 18.4142 3.29289 18.7071C3.58579 19 4.05719 19 5 19C5.94281 19 6.41421 19 6.70711 18.7071C7 18.4142 7 17.9428 7 17V11C7 10.0572 7 9.58579 6.70711 9.29289C6.41421 9 5.94281 9 5 9C4.05719 9 3.58579 9 3.29289 9.29289Z" fill="#1C274C"/>
+                    <path d="M3 21.25C2.58579 21.25 2.25 21.5858 2.25 22C2.25 22.4142 2.58579 22.75 3 22.75H21C21.4142 22.75 21.75 22.4142 21.75 22C21.75 21.5858 21.4142 21.25 21 21.25H3Z" fill="#1C274C"/>
+                  </svg>
+                </a>
+              </li>
+
+            </ul>
+          </nav>
+        </header>
+
+        <div class="page__content">
+
+          <!-- main part -->
+          <main>
+
+            <!-- date container -->
+            <div class="page__date-wrapper">
+              <button type="button" class="page__datepicker-wrapper" title="Открыть календарь">
+                <span class="page__datepicker">
+                  <svg class="page__datepicker-button" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M14 22H10C6.22876 22 4.34315 22 3.17157 20.8284C2 19.6569 2 17.7712 2 14V12C2 8.22876 2 6.34315 3.17157 5.17157C4.34315 4 6.22876 4 10 4H14C17.7712 4 19.6569 4 20.8284 5.17157C22 6.34315 22 8.22876 22 12V14C22 17.7712 22 19.6569 20.8284 20.8284C20.1752 21.4816 19.3001 21.7706 18 21.8985" stroke="#3f3e3e" stroke-width="1.5" stroke-linecap="round"/>
+                    <path d="M7 4V2.5" stroke="#3f3e3e" stroke-width="1.5" stroke-linecap="round"/>
+                    <path d="M17 4V2.5" stroke="#3f3e3e" stroke-width="1.5" stroke-linecap="round"/>
+                    <path d="M21.5 9H16.625H10.75M2 9H5.875" stroke="#3f3e3e" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                  <input type="date" class="page__datepicker-input">
+                </span>
+              </button>
+              <span>Сегодня</span>
+            </div>
+
+            <!-- goal container -->
+            <div class="page__goal-container">
+
+              <div class="page__goal-box">
+                <h2 class="page__goal-value">1600</h2>
+                <span>Цель на день (ккал)</span>
+              </div>
+
+              <div class="page__goal-box page__fact-box">
+                <h2 class="page__fact-value">600</h2>
+                <span>Факт (ккал)</span>
+              </div>
+
+              <div class="page__goal-box page__fact-box">
+                <h2 class="page__fact-value page__fact-value-percent">40%</h2>
+                <span>Факт (ккал), %</span>
+              </div>
+
+            </div>
+
+            <!-- table -->
+            <div class="page__table-wrapper">
+
+              <div class="page__btn-container">
+                <button type="button" class="page__btn">
+                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="12" r="10" stroke="#1C274C" stroke-width="1.5"/>
+                    <path d="M15 12L12 12M12 12L9 12M12 12L12 9M12 12L12 15" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round"/>
+                  </svg>
+                  Добавить запись
+                </button>
+
+                <button type="button" class="page__btn">
+                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+                    <g id="SVGRepo_iconCarrier"> <path d="M20.5001 6H3.5" stroke="#545350" stroke-width="1.5" stroke-linecap="round"/> <path d="M18.8332 8.5L18.3732 15.3991C18.1962 18.054 18.1077 19.3815 17.2427 20.1907C16.3777 21 15.0473 21 12.3865 21H11.6132C8.95235 21 7.62195 21 6.75694 20.1907C5.89194 19.3815 5.80344 18.054 5.62644 15.3991L5.1665 8.5" stroke="#545350" stroke-width="1.5" stroke-linecap="round"/> <path d="M6.5 6C6.55588 6 6.58382 6 6.60915 5.99936C7.43259 5.97849 8.15902 5.45491 8.43922 4.68032C8.44784 4.65649 8.45667 4.62999 8.47434 4.57697L8.57143 4.28571C8.65431 4.03708 8.69575 3.91276 8.75071 3.8072C8.97001 3.38607 9.37574 3.09364 9.84461 3.01877C9.96213 3 10.0932 3 10.3553 3H13.6447C13.9068 3 14.0379 3 14.1554 3.01877C14.6243 3.09364 15.03 3.38607 15.2493 3.8072C15.3043 3.91276 15.3457 4.03708 15.4286 4.28571L15.5257 4.57697C15.5433 4.62992 15.5522 4.65651 15.5608 4.68032C15.841 5.45491 16.5674 5.97849 17.3909 5.99936C17.4162 6 17.4441 6 17.5 6" stroke="#545350" stroke-width="1.5"/> </g>
+                  </svg>
+                  Отчистить таблицу
+                </button>
+              </div>
+
+              <table class="table">
+                <thead>
+                  <tr class="table__head-row">
+                    <th class="table__header"></th>
+                    <th class="table__header table__header-type">Время</th>
+                    <th class="table__header table__header-size">Грамм</th>
+                    <th class="table__header table__header-energy">Ккал</th>
+                  </tr>
+                </thead>
+
+                <tbody class="table__body">
+                  <tr class="table__row">
+                    <td>
+                      <input type="text" class="table__input" value="Котлетки">
+                    </td>
+                    <td>
+                      <select class="table__meal-type">
+                        <option>Завтрак</option>
+                        <option>Обед</option>
+                        <option>Полдник</option>
+                        <option>Ужин</option>
+                        <option>Захотелось...</option>
+                      </select>
+                    </td>
+                    <td>
+                      <input type="number" class="table__input table__meal-size" value="100">
+                    </td>
+                    <td class="table__td-energy">
+                      <input type="number" class="table__input table__meal-energy" value="500">
+                      <button type="button" class="table__delete-btn" title="удалить">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+                          <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+                          <g id="SVGRepo_iconCarrier"> <path d="M20.5001 6H3.5" stroke="#545350" stroke-width="1.5" stroke-linecap="round"/> <path d="M18.8332 8.5L18.3732 15.3991C18.1962 18.054 18.1077 19.3815 17.2427 20.1907C16.3777 21 15.0473 21 12.3865 21H11.6132C8.95235 21 7.62195 21 6.75694 20.1907C5.89194 19.3815 5.80344 18.054 5.62644 15.3991L5.1665 8.5" stroke="#545350" stroke-width="1.5" stroke-linecap="round"/> <path d="M6.5 6C6.55588 6 6.58382 6 6.60915 5.99936C7.43259 5.97849 8.15902 5.45491 8.43922 4.68032C8.44784 4.65649 8.45667 4.62999 8.47434 4.57697L8.57143 4.28571C8.65431 4.03708 8.69575 3.91276 8.75071 3.8072C8.97001 3.38607 9.37574 3.09364 9.84461 3.01877C9.96213 3 10.0932 3 10.3553 3H13.6447C13.9068 3 14.0379 3 14.1554 3.01877C14.6243 3.09364 15.03 3.38607 15.2493 3.8072C15.3043 3.91276 15.3457 4.03708 15.4286 4.28571L15.5257 4.57697C15.5433 4.62992 15.5522 4.65651 15.5608 4.68032C15.841 5.45491 16.5674 5.97849 17.3909 5.99936C17.4162 6 17.4441 6 17.5 6" stroke="#545350" stroke-width="1.5"/> </g>
+                        </svg>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+          </main>
+
+        </div>
+
+      </div>
     </div>
   </body>
 </html>

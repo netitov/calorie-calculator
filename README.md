@@ -1,6 +1,6 @@
 # Calorie-calculator
 
-![Project image](https://github.com/netitov/meme-generator/blob/main/src/assets/img/git-hub-image.png)
+![Project image](https://github.com/netitov/calorie-calculator/blob/main/src/assets/img/git-hub-image.png)
 
 Create your own memes!
 Upload an image, add text and download your meme
