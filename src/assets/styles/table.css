@@ -39,6 +39,16 @@
   width: 70%;
 }
 
+.table__input {
+  font-size: inherit;
+  background: none;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  transition: all 0.3s;
+  padding: 5px;
+}
+
 .table__meal-type {
   border: none;
   background-color: #eef6f4a3;
@@ -56,17 +66,7 @@
   font-weight: 400;
 }
 
-.table__input {
-  font-size: inherit;
-  background: none;
-  border: none;
-  outline: none;
-  border-radius: 10px;
-  transition: all 0.3s;
-  padding: 5px;
-}
-
-.table__input:hover, .table__input:focus {
+.table__input:hover, .table__input:focus, .table__row_template .table__input {
   background-color: #cee5e075;
 }
 
