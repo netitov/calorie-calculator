@@ -11,6 +11,12 @@
   font-weight: 300;
   text-align: start;
   padding: 0 5px 5px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.table__header:hover {
+  opacity: 0.7;
 }
 
 .table__header-energy, .table__header-size {
