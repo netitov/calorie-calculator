@@ -3,14 +3,16 @@ import { updateLocalStorage, removeFromLocalStorage } from '../assets/utils/loca
 import { compareByField } from '../assets/utils/sorter';
 
 export default class MealTable {
-  constructor () {
+  constructor (getCurrentDate) {
     this._tableBody = document.querySelector('.table__body');
     this._addBtn = document.querySelector('.page__btn-add');
     this._deleteAllBtn = document.querySelector('.page__delete-btn');
     this._sortedField;
-    this._savedElements = JSON.parse(localStorage.getItem('meals'));
+    this._savedElements;
+    this._filteredElements = [];
     this._headers = document.querySelectorAll('.table__header');
     this._mealData;
+    this._getCurrentDate = getCurrentDate;
   }
 
   _generateItem(savedMeal) {
@@ -20,7 +22,6 @@ export default class MealTable {
     const deleteBtn = elementTemplate.querySelector('.table__delete-btn');
     const rowElement = elementTemplate.querySelector('.table__row');
     const mealInput = elementTemplate.querySelector('.table__input-meal');
-    const mealTime = elementTemplate.querySelector('.table__meal-type');
     let id;
     //if meal already saved in local storage - fill table
     if (savedMeal) {
@@ -36,10 +37,6 @@ export default class MealTable {
         this._handleInputChange(id, i, rowElement);
       })
     })
-    //add 'Select' listener
-    mealTime.addEventListener('change', (e) => {
-      this._handleInputChange(id, mealTime, rowElement, e.target.value);
-    });
     //add delete btn listener
     deleteBtn.addEventListener('click', () => this._deleteItem(id, rowElement));
     return { elementTemplate, mealInput };
@@ -57,42 +54,70 @@ export default class MealTable {
     mealEnergyElement.value = savedMeal.mealEnergy || '';
   }
 
-  _renderItems(elements) {
-    if (elements) {
-      elements.forEach((i) => {
-        const { elementTemplate } = this._generateItem(i);
-        this._tableBody.append(elementTemplate);
-        this._rowTemplate.classList.remove('table__row_template');
-      })
-    }
+  renderItems() {
+    //clear current table rows
+    const currentRows = this._tableBody.querySelectorAll('.table__row');
+    currentRows.forEach((i) => {
+      i.remove();
+    })
+
+    //add new rows filtered by selected date
+    const selectedDate = this._getCurrentDate();
+    this._savedElements = JSON.parse(localStorage.getItem('meals'));
+    const filteredItems = this._savedElements.filter(item => item.date === selectedDate);
+    this._filteredElements = filteredItems;
+    filteredItems.forEach(i => {
+      const { elementTemplate } = this._generateItem(i);
+      this._tableBody.append(elementTemplate);
+      this._rowTemplate.classList.remove('table__row_template');
+    });
   }
 
-  _handleInputChange(id, input, rowElement, selectValue) {
+  _handleInputChange(id, input, rowElement) {
     //save changes only if input is not empty
-    let newValue = selectValue || input.value;
+    let newValue = input.value;
     if (newValue) {
       const formattedValue = input.type === 'number' ? Number(newValue) : newValue;
-      const newMeal = { id, [input.name]: formattedValue };
-      updateLocalStorage(newMeal, input.name, 'meals');
+      const newMeal = { id, [input.name]: formattedValue, date: this._getCurrentDate() };
+      const updatedKey = input.name;
+
+      //update items in local storage
+      updateLocalStorage(newMeal, updatedKey, 'meals');
+
+      //update class propery (list of elements this._filteredElements)
+      const index = this._filteredElements.findIndex(item => item.id === newMeal.id);
+      if (index !== -1) {
+        this._filteredElements[index][updatedKey] = newMeal[updatedKey];
+      } else {
+        const newObj = !newMeal.mealTime ? { ...newMeal, mealTime: 'Завтрак' } : newMeal;
+        this._filteredElements.push(newObj);
+      }
+
       //remove new meal styles
       rowElement.classList.remove('table__row_template');
     }
   }
 
   _deleteItem(id, element) {
+    //update local storage
     removeFromLocalStorage(id, 'meals');
+
+    //update class property (list of meals): this._filteredElements
+    const updatedElements = this._filteredElements.filter((item) => item.id !== id);
+    this._filteredElements = updatedElements;
+
+    //remove element from page
     element.remove();
   }
 
   _sortTable(field) {
-    this._savedElements = JSON.parse(localStorage.getItem('meals'));
     let sortedColumn = this._sortedField;
     if (!sortedColumn || !sortedColumn[field]) {
       sortedColumn = { [field]: 'asc' };
     } else {
       sortedColumn = sortedColumn[field] === 'asc' ?  { [field]: 'desc' } :  { [field]: 'asc' };
     }
-    const sortedArr = [...this._savedElements].sort(compareByField(field, sortedColumn[field]));
+    const sortedArr = [...this._filteredElements].sort(compareByField(field, sortedColumn[field]));
     const rowElements = document.querySelectorAll('.table__row');
     sortedArr.forEach((i, index) => {
       if (rowElements[index]) {
@@ -113,7 +138,7 @@ export default class MealTable {
     })
 
     //initial items render
-    this._renderItems(this._savedElements);
+    this.renderItems();
 
     //clear meal table on btn click
     this._deleteAllBtn.addEventListener('click', () => {
