@@ -67,6 +67,7 @@ export default class Summary {
       const goalsValueArr = this._goals.map(i => i.goal);
       const averageGoalValue = Math.round(goalsValueArr.reduce((prev, curr) => prev + curr) / goalsValueArr.length);
       this._goalElement.value = averageGoalValue;
+      this._percentElement.textContent = Math.round(totalEnergyValue / averageGoalValue * 100) + '%';
 
       currentGoalValue = averageGoalValue;
     } else {

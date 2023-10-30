@@ -3,7 +3,7 @@
   --darker-green: #769e95;
 }
 
-.body {
+body {
   overflow-y: scroll;
 }
 
@@ -331,6 +331,22 @@
   margin: 0;
   text-align: center;
 }
+
+.page__search-input {
+  outline: none;
+  border: none;
+  cursor: auto;
+}
+
+.page__search-input:focus {
+  background-color: #b6d8d0;
+}
+
+.page__search-input::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
 
 @media (max-width: 768px) {
   .page {

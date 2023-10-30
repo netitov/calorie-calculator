@@ -15,6 +15,7 @@ export default class MealTable {
     this._getCurrentDate = getCurrentDate;
     this._updateSummary = updateSummary;
     this._renderCharts = renderCharts;
+    this._searchInput = document.querySelector('.page__search-input');
   }
 
   getCurrentElements() {
@@ -60,7 +61,7 @@ export default class MealTable {
     mealEnergyElement.value = savedMeal.mealEnergy || '';
   }
 
-  renderItems() {
+  renderItems(array) {
     //clear current table rows
     const currentRows = this._tableBody.querySelectorAll('.table__row');
     currentRows.forEach((i) => {
@@ -68,12 +69,12 @@ export default class MealTable {
     })
 
     //add new rows filtered by selected date
-    this._savedElements = JSON.parse(localStorage.getItem('meals'));
+    this._savedElements = array || JSON.parse(localStorage.getItem('meals'));
 
     if (this._savedElements) {
       const selectedDate = this._getCurrentDate();
       const filteredItems = this._savedElements.filter(item => item.date === selectedDate);
-      this._filteredElements = filteredItems;
+      if (!array) this._filteredElements = filteredItems;
       filteredItems.forEach(i => {
         const { elementTemplate } = this._generateItem(i);
         this._tableBody.append(elementTemplate);
@@ -142,6 +143,16 @@ export default class MealTable {
     this._sortedField = sortedColumn;
   }
 
+  _handleSearch(e) {
+    const text = e.target.value.toLowerCase();
+    const filteredArr = this._filteredElements.filter((i) => i.meal.toLowerCase().includes(text));
+    this.renderItems(filteredArr);
+  }
+
+  dropSearch() {
+    this._searchInput.value = '';
+  }
+
   setEventListeners() {
 
     //add meal on btn click
@@ -172,6 +183,9 @@ export default class MealTable {
         i.classList.add(`table__header_${this._sortedField[i.dataset.name]}`);
       })
     })
+
+    //handle search product
+    this._searchInput.addEventListener('input', (e) => this._handleSearch(e));
 
 
   }

@@ -49,6 +49,7 @@ dateInput.addEventListener('change', () => {
   }
   dateValue.textContent = selectedDate;
   mealTable.renderItems();
+  mealTable.dropSearch();
   summary.fillSummary();
 })
 
