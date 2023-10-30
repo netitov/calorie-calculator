@@ -5,7 +5,7 @@ export function updateLocalStorage(object, changedKey, storageItem) {
   if (index !== -1) {
     savedElements[index][changedKey] = object[changedKey];
   } else {
-    const newObj = !object.mealTime ? { ...object, mealTime: 'Завтрак' } : object;
+    const newObj = !object.mealTime && changedKey !== 'goal' ? { ...object, mealTime: 'Завтрак' } : object;
     savedElements.push(newObj);
   }
   localStorage.setItem(storageItem, JSON.stringify(savedElements));

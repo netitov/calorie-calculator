@@ -1,5 +1,6 @@
 import '../assets/styles/index.css';
 import MealTable from './mealTable';
+import Summary from './summary';
 import { dateToDM, compareDates, dateToInputValue } from '../assets/utils/dateFormater';
 
 const dateInput = document.querySelector('.page__datepicker-input');
@@ -17,9 +18,19 @@ const dateHandler = {
   }
 };
 
-const mealTable = new MealTable(() => dateHandler.getCurrentDate());
+const mealTable = new MealTable(() => dateHandler.getCurrentDate(), updateSummary);
+const summary = new Summary({
+  getCurrentElements: () => mealTable.getCurrentElements(),
+  getCurrentDate: () => dateHandler.getCurrentDate(),
+});
 
 mealTable.setEventListeners();
+summary.setEventListeners();
+
+//update summary when tables data is changed
+function updateSummary() {
+  summary.fillSummary();
+}
 
 //handle date change
 dateInput.addEventListener('change', () => {
@@ -33,5 +44,6 @@ dateInput.addEventListener('change', () => {
   }
   dateValue.textContent = selectedDate;
   mealTable.renderItems();
+  summary.fillSummary();
 })
 

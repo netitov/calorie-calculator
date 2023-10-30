@@ -3,7 +3,7 @@ import { updateLocalStorage, removeFromLocalStorage } from '../assets/utils/loca
 import { compareByField } from '../assets/utils/sorter';
 
 export default class MealTable {
-  constructor (getCurrentDate) {
+  constructor (getCurrentDate, updateSummary) {
     this._tableBody = document.querySelector('.table__body');
     this._addBtn = document.querySelector('.page__btn-add');
     this._deleteAllBtn = document.querySelector('.page__delete-btn');
@@ -13,6 +13,11 @@ export default class MealTable {
     this._headers = document.querySelectorAll('.table__header');
     this._mealData;
     this._getCurrentDate = getCurrentDate;
+    this._updateSummary = updateSummary;
+  }
+
+  getCurrentElements() {
+    return this._filteredElements;
   }
 
   _generateItem(savedMeal) {
@@ -62,15 +67,19 @@ export default class MealTable {
     })
 
     //add new rows filtered by selected date
-    const selectedDate = this._getCurrentDate();
     this._savedElements = JSON.parse(localStorage.getItem('meals'));
-    const filteredItems = this._savedElements.filter(item => item.date === selectedDate);
-    this._filteredElements = filteredItems;
-    filteredItems.forEach(i => {
-      const { elementTemplate } = this._generateItem(i);
-      this._tableBody.append(elementTemplate);
-      this._rowTemplate.classList.remove('table__row_template');
-    });
+
+    if (this._savedElements) {
+      const selectedDate = this._getCurrentDate();
+      const filteredItems = this._savedElements.filter(item => item.date === selectedDate);
+      this._filteredElements = filteredItems;
+      filteredItems.forEach(i => {
+        const { elementTemplate } = this._generateItem(i);
+        this._tableBody.append(elementTemplate);
+        this._rowTemplate.classList.remove('table__row_template');
+      });
+    }
+
   }
 
   _handleInputChange(id, input, rowElement) {
@@ -96,6 +105,7 @@ export default class MealTable {
       //remove new meal styles
       rowElement.classList.remove('table__row_template');
     }
+    this._updateSummary();
   }
 
   _deleteItem(id, element) {
@@ -108,6 +118,7 @@ export default class MealTable {
 
     //remove element from page
     element.remove();
+    this._updateSummary();
   }
 
   _sortTable(field) {
