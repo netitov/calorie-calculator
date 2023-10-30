@@ -2,7 +2,6 @@
   width: 100%;
   border-spacing: 0;
   table-layout: fixed;
-  min-width: 350px;
   max-width: 700px;
   font-size: 15px;
 }
@@ -21,6 +20,10 @@
 
 .table__header-energy, .table__header-size {
   width: 100px;
+}
+
+.table__header-type {
+  width: 134px;
 }
 
 .table__header_asc:after {
@@ -53,6 +56,11 @@
   border-radius: 10px;
   transition: all 0.3s;
   padding: 5px;
+  box-sizing: border-box;
+}
+
+.table__input-meal {
+  width: 100%;
 }
 
 .table__meal-type {
@@ -107,6 +115,30 @@
 
 .table__delete-btn:hover > svg path {
   stroke: var(--darker-green);
+}
+
+@media (max-width: 768px) {
+
+  .table__header-type {
+    display: none;
+  }
+
+  .table__td-type {
+    display: none;
+  }
+
+  .table__header-size {
+    display: none;
+  }
+
+  .table__td-size {
+    display: none;
+  }
+
+  .table__delete-btn {
+    opacity: 1;
+  }
+
 }
 
 
