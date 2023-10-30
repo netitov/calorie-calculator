@@ -3,6 +3,10 @@
   --darker-green: #769e95;
 }
 
+.body {
+  overflow-y: scroll;
+}
+
 .page {
   font-family: 'Noto Sans Display', sans-serif;
   background: linear-gradient(0deg, rgb(0 0 0 / 0%) 38%, rgb(62 151 131 / 58%) 100%);
@@ -30,10 +34,11 @@
 
 .page__content {
   display: flex;
+  flex-direction: column;
   margin-top: 40px;
 }
 
-main {
+.page__main {
   display: flex;
   flex: 1;
   align-items: center;
@@ -292,5 +297,41 @@ main {
 .page__tooltip-value {
   font-weight: 600;
 }
+
+.page__charts {
+  margin: 40px auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  visibility: hidden;
+  opacity: 0;
+  height: 0;
+  transition: all 0.3s;
+}
+
+.page__charts_active {
+  height: auto;
+  visibility: visible;
+  opacity: 1;
+}
+
+.page__chart {
+  padding: 10px;
+  border-radius: 10px;
+  /* box-shadow: 0px 0px 4px #00000030; */
+  background-color: #bcd9d22e;
+  box-sizing: border-box;
+}
+
+.page__chart-heading {
+  font-weight: 400;
+  font-size: 16px;
+  border-radius: 10px;
+  margin: 0;
+  text-align: center;
+
+}
+
 
 

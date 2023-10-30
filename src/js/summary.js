@@ -1,7 +1,7 @@
 import { updateLocalStorage } from '../assets/utils/localStorageHandler';
 
 export default class Summary {
-  constructor ({ getCurrentElements, getCurrentDate }) {
+  constructor ({ getCurrentElements, getCurrentDate }, renderCharts) {
     this._goalElement = document.querySelector('.page__goal-value');
     this._factElement = document.querySelector('.page__fact-value');
     this._percentElement = document.querySelector('.page__fact-value-percent');
@@ -12,6 +12,7 @@ export default class Summary {
     this._goalBox = document.querySelector('.page__goal-box');
     this._factBox = document.querySelector('.page__fact-box');
     this._limitValue = document.querySelector('.page__tooltip-value');
+    this._renderCharts = renderCharts;
   }
 
   _updateGoal() {
@@ -66,6 +67,7 @@ export default class Summary {
       const goalsValueArr = this._goals.map(i => i.goal);
       const averageGoalValue = Math.round(goalsValueArr.reduce((prev, curr) => prev + curr) / goalsValueArr.length);
       this._goalElement.value = averageGoalValue;
+
       currentGoalValue = averageGoalValue;
     } else {
       this._goalBox.classList.add('page__goal-box_inactive');
@@ -100,6 +102,7 @@ export default class Summary {
     this._goalElement.addEventListener('blur', () => {
       this._updateGoal();
       this.fillSummary();
+      this._renderCharts();
     });
 
   }

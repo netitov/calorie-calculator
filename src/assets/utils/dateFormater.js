@@ -24,6 +24,16 @@ export function dateToInputValue(date) {
   return formattedDate;
 }
 
+export function dateToDDMM(date) {
+  const dateForm = new Date(date);
+  const month = (dateForm.getMonth() + 1).toString().padStart(2, '0');
+  const day = dateForm.getDate().toString().padStart(2, '0');
+
+  const formattedDate = `${day}.${month}`;
+
+  return formattedDate;
+}
+
 export function compareDates(date1, date2) {
   const firstDate = new Date(date1);
   const secondDate = new Date(date2);

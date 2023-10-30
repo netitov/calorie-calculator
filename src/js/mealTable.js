@@ -3,7 +3,7 @@ import { updateLocalStorage, removeFromLocalStorage } from '../assets/utils/loca
 import { compareByField } from '../assets/utils/sorter';
 
 export default class MealTable {
-  constructor (getCurrentDate, updateSummary) {
+  constructor (getCurrentDate, updateSummary, renderCharts) {
     this._tableBody = document.querySelector('.table__body');
     this._addBtn = document.querySelector('.page__btn-add');
     this._deleteAllBtn = document.querySelector('.page__delete-btn');
@@ -14,6 +14,7 @@ export default class MealTable {
     this._mealData;
     this._getCurrentDate = getCurrentDate;
     this._updateSummary = updateSummary;
+    this._renderCharts = renderCharts;
   }
 
   getCurrentElements() {
@@ -106,6 +107,7 @@ export default class MealTable {
       rowElement.classList.remove('table__row_template');
     }
     this._updateSummary();
+    this._renderCharts();
   }
 
   _deleteItem(id, element) {
@@ -119,6 +121,7 @@ export default class MealTable {
     //remove element from page
     element.remove();
     this._updateSummary();
+    this._renderCharts();
   }
 
   _sortTable(field) {
