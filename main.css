@@ -575,6 +575,7 @@ body {
   margin-bottom: 25px;
   display: flex;
   gap: 15px;
+  flex-wrap: wrap;
 }
 
 .page__btn {
