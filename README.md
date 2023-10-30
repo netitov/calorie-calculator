@@ -1,6 +1,6 @@
 # Calorie-calculator
 
-![Project image](https://github.com/netitov/calorie-calculator/blob/main/src/assets/img/site-logo.png)
+![Project image](https://github.com/netitov/calorie-calculator/blob/master/src/assets/img/site-logo.png)
 
 View the project: <>
 
