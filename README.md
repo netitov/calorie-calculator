@@ -1,14 +1,18 @@
 # Calorie-calculator
 
-![Project image](https://github.com/netitov/calorie-calculator/blob/main/src/assets/img/git-hub-image.png)
-
-Create your own memes!
-Upload an image, add text and download your meme
+![Project image](https://github.com/netitov/calorie-calculator/blob/main/src/assets/img/site-logo.png)
 
 View the project: <>
 
 ### Features and content
 
+1. Add/delete products
+
+2. Add goals on every day
+
+3. Search products
+
+4. Charts with dynamic
 
 
 ## Setup
